@@ -1,0 +1,21 @@
+security:
+    role_hierarchy:
+        ROLE_USER: [ ROLE_USER ]
+    
+    encoders:
+        bcrypt:
+            algorithm: bcrypt
+            cost: 12
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        api_public:
+            pattern:  ^/
+            stateless: true
+            anonymous: true
+
+    access_control:
+        - { path: ^/user, roles: IS_AUTHENTICATED_FULLY }
